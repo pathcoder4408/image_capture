@@ -86,6 +86,12 @@ if ($_POST['bn_save'] ?? null) {
 // Save selected images
     if (!empty($_POST['selectedImages'])) {
         $selectedImages = $_POST['selectedImages'];
+        // Ensure the directory exists
+        if (!is_dir($imagedir)) {
+            if (!mkdir($imagedir, 0777, true)) {
+                die(xlt('Failed to create directory for images.'));
+            }
+        }
         foreach ($selectedImages as $index => $imageData) {
             if (preg_match('/^data:image\/(png|jpg|jpeg);base64,/', $imageData, $type)) {
                 $imageData = substr($imageData, strpos($imageData, ',') + 1);
