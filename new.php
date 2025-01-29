@@ -358,7 +358,6 @@ if ($formid) {
                     <?php } ?>
                     <input type="hidden" id="back" name="back" value="">
                     <button type="button" class="btn btn-secondary" onclick="return goBack()"><?php echo xlt('Back'); ?></button>
-                    <button type="button" class="btn btn-warning" style="color: #000000;" onclick="return goBack()"><?php echo xlt('Exit Document'); ?></button>
                 </div>
                 <p class="text-danger m-1" id="webcamErrorMessage" style="font-size: 1.1rem"></p>
             </div>
