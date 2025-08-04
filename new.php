@@ -18,8 +18,10 @@ if (!$encounter) {
     die("Internal error: we do not seem to be in an encounter!");
 }
 
-if (!empty($_POST['csrf_token_form']) && !CsrfUtils::verifyCsrfToken($_POST['csrf_token_form']) === false) {
-    die("Invalid CSRF token");
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (empty($_POST['csrf_token_form']) || !CsrfUtils::verifyCsrfToken($_POST['csrf_token_form'])) {
+        die("Invalid CSRF token");
+    }
 }
 
 // Gracefully handle form exit submission
